@@ -1,0 +1,29 @@
+{
+  "name": "class-name",
+  "version": "0.1.0",
+  "description": "A simple utility function for generating a className, intended for use with React.",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonify/class-name"
+  },
+  "keywords": [
+    "react",
+    "classname"
+  ],
+  "author": "Simon Fletcher <simon@wakecodesleep.com> (http://github.com/simonify)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonify/class-name"
+  },
+  "homepage": "https://github.com/simonify/class-name",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.6.0"
+  }
+}
