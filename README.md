@@ -69,7 +69,9 @@ following:
 
   * **An object with a `toClassList` method (which should return an array)** - e.g. a `className` instance.
 
-    `className('button', className('big')) // "button big"`
+    ```js
+    className('button', className('big')) // "button big"
+    ```
 
   * **A plain object mapping class name prefixes to a valid class name value.**
 
