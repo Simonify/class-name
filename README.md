@@ -59,9 +59,11 @@ following:
 
   * **A plain string or number (will be casted to a string).**
 
-    `className("hello") // "hello"`
+   ```js
+    className("hello") // "hello"
 
-    `className(1) // "1"`
+    className(1) // "1"
+   ```
 
   * **An object with a `toClassList` method (which should return an array)** - e.g. a `className` instance.
 
@@ -69,17 +71,23 @@ following:
 
   * **A plain object mapping class name prefixes to a valid class name value.**
 
-    `className({ hello: 'world' }) // "hello-world"`
+    ```js
+    className({ hello: 'world' }) // "hello-world"
+    ```
 
   * **A plain object mapping class name prefixes to a truthy value** — if the value
     is truthy, the key will be included in the class name list. If not, it will
     be ignored.
 
-    `className({ hello: true, world: false }) // "hello"`
+    ```js
+    className({ hello: true, world: false }) // "hello"
+    ```
 
   * **An array of valid *ClassNameValue*s.**
 
-    `className(["hello", { "world": true }]) // "hello world"`
+   ```js
+    className(["hello", { "world": true }]) // "hello world"
+    ```
 
 # Test coverage
 
@@ -92,6 +100,7 @@ as a prefix to the values (the object values will just be treated as *ClassNameV
 
 # Example outputs
 
+```js
     className('a').toString() // "a"
     className('a', 'b').toString(); // "a b"
     className(['a', 'b']).toString(); // "a b"
@@ -105,6 +114,7 @@ as a prefix to the values (the object values will just be treated as *ClassNameV
     const bigBlueButton = className(blueButton, 'big');
 
     bigBlueButton.toString(); // "button blue big"
+```
 
 # React PropType
 
@@ -113,7 +123,7 @@ component prop at some point. The library provides a simple `PropType` function
 which you can use to ensure the prop you receive can be handled via `class-name`.
 
 Example:
-
+```js
     import React, { Component } from 'react';
     import { className as ClassName, PropType as classNamePropType } from 'class-name';
 
@@ -142,3 +152,4 @@ Example:
         );
       }
     }
+```
