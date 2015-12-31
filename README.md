@@ -19,7 +19,9 @@ API
 
 To use, simply import the library in to your project, for example with ES6 modules:
 
-`import className, { PropType } from 'class-name'`
+```js
+import className, { PropType } from 'class-name'
+```
 
 ### className(...className:ClassNameValue)
 
@@ -101,19 +103,19 @@ as a prefix to the values (the object values will just be treated as *ClassNameV
 # Example outputs
 
 ```js
-    className('a').toString() // "a"
-    className('a', 'b').toString(); // "a b"
-    className(['a', 'b']).toString(); // "a b"
-    className('a', ['b', 'c']).toString(); // "a b c"
-    className('a', { b: true }).toString(); // "a b"
-    className('a', { b: 'c' }).toString(); // "a b-c"
-    className('a', { b: { c: true } }).toString() // "a b-c"
-    className('a', { b: { c: ['d', 'e', 'f' ] } }).toString() // "a b-c-d b-c-e b-c-f"
+className('a').toString() // "a"
+className('a', 'b').toString(); // "a b"
+className(['a', 'b']).toString(); // "a b"
+className('a', ['b', 'c']).toString(); // "a b c"
+className('a', { b: true }).toString(); // "a b"
+className('a', { b: 'c' }).toString(); // "a b-c"
+className('a', { b: { c: true } }).toString() // "a b-c"
+className('a', { b: { c: ['d', 'e', 'f' ] } }).toString() // "a b-c-d b-c-e b-c-f"
 
-    const blueButton = className('button', 'blue');
-    const bigBlueButton = className(blueButton, 'big');
+const blueButton = className('button', 'blue');
+const bigBlueButton = className(blueButton, 'big');
 
-    bigBlueButton.toString(); // "button blue big"
+bigBlueButton.toString(); // "button blue big"
 ```
 
 # React PropType
@@ -124,32 +126,32 @@ which you can use to ensure the prop you receive can be handled via `class-name`
 
 Example:
 ```js
-    import React, { Component } from 'react';
-    import { className as ClassName, PropType as classNamePropType } from 'class-name';
+import React, { Component } from 'react';
+import { className as ClassName, PropType as classNamePropType } from 'class-name';
 
-    class ButtonComponent extends Component {
-      static propTypes = {
-        className: classNamePropType
-      };
+class ButtonComponent extends Component {
+  static propTypes = {
+    className: classNamePropType
+  };
 
-      render() {
-        const className = ClassName('button', this.props.className);
+  render() {
+    const className = ClassName('button', this.props.className);
 
-        return (
-          <button className={className}>
-            {this.props.children}
-          </button>
-        );
-      }
-    }
+    return (
+      <button className={className}>
+        {this.props.children}
+      </button>
+    );
+  }
+}
 
-    class FooComponent extends Component {
-      render() {
-        return (
-          <ButtonComponent className="foo-button">
-            Click me!
-          </ButtonComponent>
-        );
-      }
-    }
+class FooComponent extends Component {
+  render() {
+    return (
+      <ButtonComponent className="foo-button">
+        Click me!
+      </ButtonComponent>
+    );
+  }
+}
 ```
