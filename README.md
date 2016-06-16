@@ -19,7 +19,9 @@ API
 
 To use, simply import the library in to your project, for example with ES6 modules:
 
-`import className, { PropType } from 'class-name'`
+```js
+import className, { PropType } from 'class-name'
+```
 
 ### className(...className:ClassNameValue):className
 
@@ -59,27 +61,37 @@ following:
 
   * **A plain string or number (will be casted to a string).**
 
-    `className("hello") // "hello"`
+   ```js
+    className("hello") // "hello"
 
-    `className(1) // "1"`
+    className(1) // "1"
+   ```
 
   * **An object with a `toClassList` method (which should return an array)** - e.g. a `className` instance.
 
-    `className('button', className('big')) // "button big"`
+    ```js
+    className('button', className('big')) // "button big"
+    ```
 
   * **A plain object mapping class name prefixes to a valid class name value.**
 
-    `className({ hello: 'world' }) // "hello-world"`
+    ```js
+    className({ hello: 'world' }) // "hello-world"
+    ```
 
   * **A plain object mapping class name prefixes to a truthy value** — if the value
     is truthy, the key will be included in the class name list. If not, it will
     be ignored.
 
-    `className({ hello: true, world: false }) // "hello"`
+    ```js
+    className({ hello: true, world: false }) // "hello"
+    ```
 
   * **An array of valid *ClassNameValue*s.**
 
-    `className(["hello", { "world": true }]) // "hello world"`
+   ```js
+    className(["hello", { "world": true }]) // "hello world"
+    ```
 
 # Test coverage
 
@@ -92,19 +104,21 @@ as a prefix to the values (the object values will just be treated as *ClassNameV
 
 # Example outputs
 
-    className('a').toString() // "a"
-    className('a', 'b').toString(); // "a b"
-    className(['a', 'b']).toString(); // "a b"
-    className('a', ['b', 'c']).toString(); // "a b c"
-    className('a', { b: true }).toString(); // "a b"
-    className('a', { b: 'c' }).toString(); // "a b-c"
-    className('a', { b: { c: true } }).toString() // "a b-c"
-    className('a', { b: { c: ['d', 'e', 'f' ] } }).toString() // "a b-c-d b-c-e b-c-f"
+```js
+className('a').toString() // "a"
+className('a', 'b').toString(); // "a b"
+className(['a', 'b']).toString(); // "a b"
+className('a', ['b', 'c']).toString(); // "a b c"
+className('a', { b: true }).toString(); // "a b"
+className('a', { b: 'c' }).toString(); // "a b-c"
+className('a', { b: { c: true } }).toString() // "a b-c"
+className('a', { b: { c: ['d', 'e', 'f' ] } }).toString() // "a b-c-d b-c-e b-c-f"
 
-    const blueButton = className('button', 'blue');
-    const bigBlueButton = className(blueButton, 'big');
+const blueButton = className('button', 'blue');
+const bigBlueButton = className(blueButton, 'big');
 
-    bigBlueButton.toString(); // "button blue big"
+bigBlueButton.toString(); // "button blue big"
+```
 
 # React PropType
 
@@ -113,32 +127,33 @@ component prop at some point. The library provides a simple `PropType` function
 which you can use to ensure the prop you receive can be handled via `class-name`.
 
 Example:
+```js
+import React, { Component } from 'react';
+import { className as ClassName, PropType as classNamePropType } from 'class-name';
 
-    import React, { Component } from 'react';
-    import { className as ClassName, PropType as classNamePropType } from 'class-name';
+class ButtonComponent extends Component {
+  static propTypes = {
+    className: classNamePropType
+  };
 
-    class ButtonComponent extends Component {
-      static propTypes = {
-        className: classNamePropType
-      };
+  render() {
+    const className = ClassName('button', this.props.className);
 
-      render() {
-        const className = ClassName('button', this.props.className);
+    return (
+      <button className={className}>
+        {this.props.children}
+      </button>
+    );
+  }
+}
 
-        return (
-          <button className={className}>
-            {this.props.children}
-          </button>
-        );
-      }
-    }
-
-    class FooComponent extends Component {
-      render() {
-        return (
-          <ButtonComponent className="foo-button">
-            Click me!
-          </ButtonComponent>
-        );
-      }
-    }
+class FooComponent extends Component {
+  render() {
+    return (
+      <ButtonComponent className="foo-button">
+        Click me!
+      </ButtonComponent>
+    );
+  }
+}
+```
