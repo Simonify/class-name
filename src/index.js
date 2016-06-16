@@ -13,7 +13,7 @@ function flattenClassNames(classNames, prefix = '') {
       return reduced;
     }
 
-    if (type === 'object') {
+    if (type === 'object' && className !== null) {
       if (typeof className.toClassList === 'function') {
         return reduced.concat(className.toClassList());
       }

@@ -12,7 +12,7 @@ API
 ===
 `class-name` exports two functions:
 
- * `className(...classNames:ClassNameValue)` (*default export*) creates a className
+ * `className(...classNames:ClassNameValue):className` (*default export*) creates a className
    object populated with the *ClassNameValue*s.
 
  * `PropType(props:object, propName:string):void` - A React propType validator for valid *ClassNameValue*s.
@@ -21,7 +21,7 @@ To use, simply import the library in to your project, for example with ES6 modul
 
 `import className, { PropType } from 'class-name'`
 
-### className(...className:ClassNameValue)
+### className(...className:ClassNameValue):className
 
 This function accepts any number of valid *ClassNameValue*s as arguments
 (read below to see what we consider a valid *ClassNameValue*).
