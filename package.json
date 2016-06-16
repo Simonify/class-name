@@ -1,6 +1,6 @@
 {
   "name": "class-name",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A simple utility function for generating a className, intended for use with React.",
   "main": "lib/index.js",
   "scripts": {
